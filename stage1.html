@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>線（せん）と間（かん）のもぐらたたき</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;color:#233a46;background:#f4f6ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0;padding:24px 16px 36px}main{max-width:980px;margin:auto}header{text-align:center}small{color:#597468;font-weight:700;letter-spacing:.13em}h1{font-size:clamp(24px,5vw,38px);margin:10px 0}header p{color:#607179;margin:8px 0 22px}.controls{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}button{font:inherit;min-height:48px;border:0;border-radius:15px;padding:12px 20px;font-weight:750;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:4px solid #edb63e;outline-offset:4px}button:disabled{cursor:default;opacity:.55}.mode{background:#fff;color:#3c5d56;border:2px solid #d9e2d7}.mode[aria-pressed="true"]{background:#245e50;color:white;border-color:#245e50}.sound{background:#e3eade;color:#385449}.stats{display:flex;gap:12px;margin:22px 0 12px}.stat{flex:1;background:white;border-radius:18px;padding:12px 18px}.label{font-size:12px;color:#667b7f}.value{font-size:28px;font-weight:800}.value span{font-size:14px;font-weight:500}.timebar{height:6px;background:#dce5dc;border-radius:9px;overflow:hidden;margin-bottom:18px}#bar{height:100%;background:#d99b34;width:100%}.board{position:relative;background:#fffef8;border:1px solid #e3e5d9;border-radius:24px;overflow:hidden;box-shadow:0 12px 35px #294d3c09}h2{text-align:center;font-size:clamp(19px,4vw,25px);margin:22px 8px 0;color:#245e50}.hint{text-align:center;margin:8px;color:#708079;font-size:14px}svg{display:block;width:100%;height:auto;min-height:260px;overflow:visible;touch-action:manipulation;user-select:none;-webkit-user-select:none}.staff{stroke:#56666b;stroke-width:1.7}.clef{font-family:"Apple Symbols","Noto Music","Segoe UI Symbol",serif;font-size:220px;fill:#314a51}.note{cursor:pointer;outline:none}.note:focus-visible .hit{stroke:#cf9627;stroke-width:3;fill:#ffe5a340}.hit{fill:transparent}.ink{fill:#293e47}.stem{stroke:#293e47;stroke-width:3}.note-inner{animation:arrive .24s ease-out;transform-box:fill-box;transform-origin:center}.wrong .ink{fill:#d65a4c}.wrong .stem{stroke:#d65a4c}.wrong .note-inner{animation:shake .25s}.feedback{position:absolute;top:72px;left:0;right:0;text-align:center;pointer-events:none;font-size:20px;font-weight:800;color:#bc7622;min-height:28px}.overlay{position:absolute;inset:83px 0 0;display:flex;align-items:center;justify-content:center;background:#fffef8ed;padding:15px}.overlay[hidden]{display:none}.card{text-align:center;max-width:440px}.card h3{font-size:26px;margin:0 0 12px}.card p{color:#617578;line-height:1.8;margin:8px 0 18px}.primary{background:#245e50;color:white;min-width:180px;box-shadow:0 5px 0 #194639}.bottom{display:flex;justify-content:center;gap:12px;margin:16px 0}.quiet{background:transparent;color:#65776e;text-decoration:underline}.rules{font-size:13px;color:#667872;line-height:1.9;text-align:center;margin:16px 0}.footer{text-align:center;font-size:12px;color:#7e8b82}#status{min-height:24px;text-align:center;color:#526e60;font-size:14px}@keyframes arrive{from{opacity:0;transform:translateY(9px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}@media(max-width:540px){body{padding:18px 10px}.stat{padding:10px 12px}.value{font-size:24px}.controls{gap:7px}button{padding:11px 14px}.board{border-radius:18px}.card h3{font-size:22px}.card p{font-size:14px}.overlay{inset:75px 0 0}.feedback{top:65px}.rules{font-size:12px}header p{font-size:14px}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Keep the game in the available browser height, with room for touch controls. */
+body{padding:8px 12px}
+main{height:calc(100vh - 16px);height:calc(100dvh - 16px);display:grid;grid-template-rows:auto auto auto 5px minmax(210px,1fr) auto auto auto auto;gap:6px}
+header small{font-size:10px}h1{font-size:clamp(22px,3vw,30px);margin:2px 0}header p{font-size:13px;margin:2px 0 4px}
+.controls{gap:7px}button{padding:9px 16px}.stats{margin:0;gap:9px}.stat{padding:6px 14px}.value{font-size:25px}.timebar{margin:0}
+.board{display:flex;flex-direction:column;min-height:0}h2{font-size:21px;margin:10px 8px 0}.hint{font-size:12px;margin:4px 8px}
+svg{flex:1;width:100%;height:0;min-height:0}.overlay{inset:65px 0 0;padding:8px}.feedback{top:57px;font-size:16px}.bottom{margin:0}.quiet{min-height:40px;padding:6px 14px}
+#status{min-height:18px;font-size:12px}.rules{margin:0;font-size:11px;line-height:1.5}.footer{margin:0;font-size:10px}
+.card h3{font-size:23px;margin:0 0 6px}.card p{font-size:14px;line-height:1.5;margin:4px 0 10px}
+@media(max-width:540px){body{padding:6px 8px}main{height:calc(100vh - 12px);height:calc(100dvh - 12px);gap:5px}.controls{gap:5px}.mode{font-size:13px;padding:8px 10px}.sound{font-size:12px;padding:8px 10px}h1{font-size:23px}.stat{padding:6px 9px}.value{font-size:23px}.label{font-size:11px}.overlay{inset:61px 0 0}.feedback{top:55px}.card h3{font-size:21px}}
+@media(max-height:740px){header small,header p,.footer{display:none}main{grid-template-rows:auto auto auto 5px minmax(200px,1fr) auto auto auto;gap:4px}h1{font-size:24px}.rules{font-size:10px;line-height:1.4}.card h3{font-size:20px}.card p{margin:3px 0 7px}}
+
+/* A quiet underground garden frames the clear music area. */
+:root{background:#edddc6;color:#493d32}
+body{background:radial-gradient(ellipse at 8% 70%,#d6bca344 0 7%,transparent 7.5%),radial-gradient(ellipse at 94% 83%,#c7a98b44 0 8%,transparent 8.5%),linear-gradient(#e6efce 0 27px,#efdfc9 27px,#e5ccb2 100%)}
+header{position:relative;padding-top:14px}header:before{content:'🌱  ·  ✿  ·  🌿  ·  ✿  ·  🌱';position:absolute;top:-9px;left:0;right:0;font-size:15px;letter-spacing:7px;color:#759561;pointer-events:none}h1{font-size:clamp(19px,3.4vw,30px);color:#604a36}
+.stat{background:#fffaf0;border:1px solid #d9c2a7}.board{background:#fffdf3;border:2px solid #cdb595;box-shadow:0 8px 24px #825b3012}.staff{stroke:#30302d}.ink{fill:#242723}.stem{stroke:#242723}.clef{fill:#242723}.board:before,.board:after{position:absolute;bottom:3px;pointer-events:none;z-index:0}.board:before{content:'🦔';font-size:0;left:14px;width:39px;height:23px;border-radius:50% 50% 30% 30%;background:radial-gradient(circle at 36% 35%,#332a25 0 2px,transparent 2.5px),radial-gradient(circle at 64% 35%,#332a25 0 2px,transparent 2.5px),radial-gradient(ellipse at 50% 65%,#d8ae9c 0 4px,transparent 4.5px),#ad8b70;box-shadow:0 5px 0 5px #dfc6a8}.board:after{content:'';right:14px;width:46px;height:25px;border-radius:50% 50% 0 0;background:#b4997f;border:6px solid #e2c8a8;border-bottom:0}#staff{position:relative;z-index:1}.overlay{z-index:2}.feedback{z-index:3}.note-inner{animation:arrive .28s cubic-bezier(.2,.8,.3,1.2)}
+@keyframes arrive{0%{opacity:0;transform:translateY(18px) scale(.85)}70%{opacity:1;transform:translateY(-3px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.spark{pointer-events:none;fill:#c18a28;animation:twinkle .45s ease-out forwards;transform-box:fill-box;transform-origin:center}@keyframes twinkle{from{opacity:.9;transform:translateY(0) scale(.65)}to{opacity:0;transform:translateY(-15px) scale(1.15)}}
+@media(max-width:540px){h1{font-size:20px}header{padding-top:12px}}@media(max-height:500px){main{height:auto;min-height:calc(100dvh - 16px)}.board{min-height:230px}}
+
+/* Stage navigation stays in the existing control rows. */
+.stage-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;border-radius:14px;font:inherit;font-size:13px;font-weight:700;text-decoration:none;color:#426452;background:#e4ead8;border:1px solid #bcc8ac}
+.stage-link:focus-visible{outline:3px solid #d19a36;outline-offset:3px}
+.next-stage{margin:10px 0 0;background:#718f75;color:#fff;font-size:15px}
+.next-stage[hidden]{display:none}
+@media(max-width:540px){.stage-link{padding:7px 10px;font-size:12px}.next-stage{font-size:14px}}
+
+header .stage-top-nav{text-align:left;position:relative;z-index:1;margin:0 0 2px}
+header .stage-top-nav .stage-link{min-height:28px;padding:5px 10px;font-size:12px;border-radius:10px}
+header{padding-top:8px}
+@media(max-width:540px){header .stage-top-nav .stage-link{font-size:11px}header{padding-top:8px}}
+</style>
+</head>
+<body>
+<main>
+<header><nav class="stage-top-nav" aria-label="ステージ移動"><a class="stage-link" href="index.html">← ステージ選択</a></nav><small>PIANO · STAGE 1</small><h1>線（せん）と間（かん）のもぐらたたき</h1><p>せんの音？ かんの音？ よく見てタップ！</p></header>
+<div class="controls" aria-label="練習する音を選ぶ">
+<button class="mode" data-mode="line" aria-pressed="true">線の音をキャッチ</button>
+<button class="mode" data-mode="space" aria-pressed="false">間の音をキャッチ</button>
+<button class="sound" id="sound" aria-pressed="true">♪ 音あり</button>
+</div>
+<div class="stats"><div class="stat"><div class="label">のこり時間</div><div class="value" id="time">30 <span>秒</span></div></div><div class="stat"><div class="label">スコア</div><div class="value" id="score">0 <span>点</span></div></div><div class="stat"><div class="label">連続正解</div><div class="value" id="streak">0 <span>回</span></div></div></div>
+<div class="timebar" aria-hidden="true"><div id="bar"></div></div>
+<section class="board" aria-label="音符をタップする五線譜">
+<h2 id="instruction">線の音をキャッチ！</h2><p class="hint" id="hint">線が音符のまんなかを通る音をタップ</p>
+<svg id="staff" viewBox="0 0 900 340" role="group" aria-label="ト音記号の五線譜。低いドから高いファまで。">
+<g class="staff"><path d="M34 90H866 M34 120H866 M34 150H866 M34 180H866 M34 210H866"/></g>
+<text class="clef" x="35" y="226" aria-hidden="true">𝄞</text><g id="notes"></g><g id="effects" aria-hidden="true" pointer-events="none"></g>
+</svg>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<div class="overlay" id="overlay"><div class="card"><h3 id="resultTitle">線の音、見つけられるかな？</h3><p id="resultText">線のまんなかにある音符をタップ。<br>間の音は、そのまま見送ってね。</p><button class="primary" id="start">スタート</button><br><a class="stage-link next-stage" id="nextStage" href="stage2.html" hidden>ステージ2「かくれんぼ」へ →</a></div></div>
+</section>
+<div class="bottom"><button class="quiet" id="stop" disabled>ゲームを終了</button></div>
+<div id="status" role="status"></div>
+<p class="rules">正解 ＋10点 ／ まちがい −5点 ／ 5連続正解ごとに ＋20点<br>30秒チャレンジ。タップしない音符は自然に消えます。<br>低いドの短い線（加線）も「線の音」です。</p>
+<p class="footer">ト音記号 · 低いド〜五線いちばん上のファ · 線6音／間5音</p>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
+let mode='line',playing=false,score=0,streak=0,hits=0,mistakes=0,sound=true,audio=null,endAt=0,nextWave=0,raf=0,feedbackUntil=0,notes=[];
+const pitches=[261.63,293.66,329.63,349.23,392,440,493.88,523.25,587.33,659.25,698.46];
+function tone(freq,duration=.13,type='sine',delay=0){if(!sound||!audio)return;const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+delay;o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.11,t+.012);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+duration+.02)}
+function pop(){if(!sound||!audio)return;const t=audio.currentTime,o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.setValueAtTime(680,t);o.frequency.exponentialRampToValueAtTime(260,t+.12);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.008);g.gain.exponentialRampToValueAtTime(.001,t+.17);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+.18)}
+function stars(n){const group=elem('g',{'aria-hidden':'true',transform:n.el.getAttribute('transform')},$('effects'));for(const [x,y] of [[-25,-16],[24,-9]])elem('path',{class:'spark',d:`M${x} ${y-6}l2 4 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1z`},group);setTimeout(()=>group.remove(),500)}
+function initAudio(){try{const AC=window.AudioContext||window.webkitAudioContext;if(AC&&!audio)audio=new AC();if(audio)audio.resume().catch(()=>{});}catch(e){}}
+function stats(){ $('score').innerHTML=score+' <span>点</span>';$('streak').innerHTML=streak+' <span>回</span>'}
+function tell(text){$('feedback').textContent=text;feedbackUntil=performance.now()+1000}
+function remove(n){n.el.remove();notes=notes.filter(a=>a!==n)}
+function tap(n){if(!playing)return;if(performance.now()>=endAt){finish();return}if(n.used||!notes.includes(n))return;n.used=true;const correct=(n.pitch%2===0)===(mode==='line');if(correct){score+=10;streak++;hits++;pop();stars(n);if(streak%5===0){score+=20;tell('5連続！ ＋20 ボーナス');tone(784,.16,'sine',.1);tone(1046.5,.23,'sine',.22)}else tell('正解！ ＋10点');remove(n)}else{score-=5;streak=0;mistakes++;tone(155,.18,'triangle');tell('おしい！ −5');n.el.classList.add('wrong');n.el.setAttribute('aria-disabled','true');}stats()}
+function elem(tag,attrs,parent){const el=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));parent.appendChild(el);return el}
+function wave(now){const count=1+Math.floor(Math.random()*4);const slots=[0,1,2,3];for(let i=slots.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[slots[i],slots[j]]=[slots[j],slots[i]]}const target=mode==='line'?[0,2,4,6,8,10]:[1,3,5,7,9],other=mode==='line'?[1,3,5,7,9]:[0,2,4,6,8,10];const targetCount=Math.ceil(count*.65);const choices=Array.from({length:count},(_,i)=>{const pool=i<targetCount?target:other;const pick=Math.floor(Math.random()*pool.length);return pool.splice(pick,1)[0]});for(let i=choices.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[choices[i],choices[j]]=[choices[j],choices[i]]}for(const [index,slot] of slots.slice(0,count).entries()){const pitch=choices[index],x=200+slot*175+(Math.random()-.5)*30,y=240-pitch*15;const el=elem('g',{class:'note',transform:`translate(${x} ${y})`,role:'button',tabindex:0,'aria-label':'音符をキャッチ'},$('notes'));const inner=elem('g',{class:'note-inner'},el);elem('rect',{class:'hit',x:-62,y:-62,width:124,height:124,rx:22},inner);if(pitch===0)elem('path',{d:'M-30 0H30',class:'staff'},inner);elem('ellipse',{cx:0,cy:0,rx:18,ry:12,transform:'rotate(-20)',class:'ink'},inner);const eyes=elem('g',{'aria-hidden':'true','pointer-events':'none'},inner);for(const ex of [-6,6]){elem('ellipse',{cx:ex,cy:-1,rx:3.8,ry:4.5,fill:'#fffdf5'},eyes);elem('circle',{cx:ex+.6,cy:-.5,r:1.8,fill:'#242723'},eyes);}const down=pitch>=6;elem('path',{d:down?'M-16 3V58':'M16 -3V-58',class:'stem'},inner);const n={el,pitch,used:false,expires:now+3000};notes.push(n);el.addEventListener('click',()=>tap(n));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tap(n)}})}}
+function tick(now){if(!playing)return;const remaining=Math.max(0,endAt-now);$('time').innerHTML=Math.ceil(remaining/1000)+' <span>秒</span>';$('bar').style.width=(remaining/300)+'%';if(remaining<=0){finish();return}for(const n of [...notes]){if(now>=n.expires)remove(n);else n.el.style.opacity=Math.min(1,(n.expires-now)/350)}if(now>=nextWave){wave(now);nextWave=now+3350}if(now>=feedbackUntil)$('feedback').textContent='';raf=requestAnimationFrame(tick)}
+function finish(manual=false){if(!playing)return;$('nextStage').hidden=false;playing=false;cancelAnimationFrame(raf);notes=[];$('notes').replaceChildren();$('effects').replaceChildren();$('overlay').hidden=false;$('stop').disabled=true;document.querySelectorAll('.mode').forEach(b=>b.disabled=false);$('resultTitle').textContent=manual?'ここまでの結果': '30秒、おつかれさま！';$('resultText').innerHTML=`<strong style="font-size:30px;color:#245e50">${score} 点</strong><br>キャッチ ${hits}回 ・ まちがい ${mistakes}回`;$('start').textContent='もう一度あそぶ';$('feedback').textContent='';$('status').textContent=`おわり。スコアは${score}点です。`;if(!manual){$('time').innerHTML='0 <span>秒</span>';$('bar').style.width='0%';tone(523,.18);tone(659,.18,'sine',.16);tone(784,.3,'sine',.32)}$('start').focus()}
+function setMode(m){$('nextStage').hidden=true;mode=m;document.querySelectorAll('.mode').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)));const line=m==='line';$('instruction').textContent=(line?'線':'間')+'の音をキャッチ！';$('hint').textContent=line?'線が音符のまんなかを通る音をタップ':'線と線のあいだにある音をタップ';$('resultTitle').textContent=(line?'線':'間')+'の音、見つけられるかな？';$('resultText').innerHTML=line?'線のまんなかにある音符をタップ。<br>間の音は、そのまま見送ってね。':'線と線のあいだの音符をタップ。<br>線の音は、そのまま見送ってね。'}
+document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+$('sound').addEventListener('click',()=>{sound=!sound;$('sound').setAttribute('aria-pressed',String(sound));$('sound').textContent=sound?'♪ 音あり':'♪ 音なし';if(sound){initAudio();tone(523)}});
+$('start').addEventListener('click',()=>{if(playing)return;$('nextStage').hidden=true;initAudio();playing=true;score=streak=hits=mistakes=0;stats();notes=[];$('notes').replaceChildren();$('effects').replaceChildren();$('overlay').hidden=true;$('stop').disabled=false;document.querySelectorAll('.mode').forEach(b=>b.disabled=true);$('status').textContent='ゲーム中。'+(mode==='line'?'線':'間')+'の音をキャッチしましょう。';endAt=performance.now()+30000;nextWave=0;feedbackUntil=0;tick(performance.now())});
+$('stop').addEventListener('click',()=>finish(true));
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)finish(true)});
+})();
+</script>
+</body>
+</html>

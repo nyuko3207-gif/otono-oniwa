@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ステージ2｜音符のかくれんぼ</title><style>.nh-game{--ink:#263e40;--teal:#24776e;--paper:#fffdf7;box-sizing:border-box;max-width:1080px;margin:auto;padding:34px 26px 28px;color:var(--ink);font-family:system-ui,-apple-system,'Hiragino Kaku Gothic ProN',sans-serif}.nh-game *{box-sizing:border-box}body{margin:0;background:#f3f3e9}.nh-game button,.nh-game select{font:inherit}.nh-game button{cursor:pointer;-webkit-tap-highlight-color:transparent}.nh-game button:focus-visible,.nh-game select:focus-visible{outline:3px solid #d68c2b;outline-offset:4px}.nh-game .eyebrow{font-size:12px;letter-spacing:.16em;font-weight:800;color:var(--teal)}.nh-game h1{font-size:clamp(27px,5vw,42px);letter-spacing:.03em;margin:10px 0}.nh-game .intro{color:#60716d;line-height:1.8;margin:0 0 25px}.nh-game .controls{display:flex;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:22px}.nh-game .field{display:grid;gap:7px;font-size:13px;font-weight:700}.nh-game .segmented{display:flex;gap:5px;padding:5px;background:#e4e8df;border-radius:14px}.nh-game .segmented button{border:0;border-radius:10px;padding:10px 19px;background:transparent;color:var(--ink);min-height:44px}.nh-game .segmented button[aria-pressed=true]{background:var(--paper);box-shadow:0 2px 5px #263e4010;color:var(--teal);font-weight:800}.nh-game select{min-height:44px;background:var(--paper);color:var(--ink);border:1px solid #cbd5c9;border-radius:10px;padding:8px 12px}.nh-game .board{background:var(--paper);border:1px solid #dce1d4;border-radius:24px;box-shadow:0 12px 40px #263e4007;overflow:hidden}.nh-game .board-head{padding:20px 24px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}.nh-game .badge{font-size:13px;color:var(--teal);background:#e8f1e7;border-radius:30px;padding:8px 13px;font-weight:700}.nh-game .progress{font-size:14px;font-weight:700}.nh-game .staff-scroll{overflow-x:auto;padding:0 16px 8px;overscroll-behavior-x:contain}.nh-game .staff{position:relative;min-width:650px;aspect-ratio:900/310}.nh-game svg{display:block;width:100%;height:100%;overflow:visible}.nh-game .slot{position:absolute;top:77%;width:8%;height:18%;transform:translateX(-50%);border:2px solid transparent;background:#eaf0e6;border-radius:12px;color:var(--ink);font-size:24px;font-weight:800;transition:background .2s,border-color .2s,opacity .65s}.nh-game .slot.hiding{opacity:0}.nh-game .slot.empty{opacity:1;background:#fffdf7;border:2px dashed #a4b7ab;color:#80958b}.nh-game .slot.correct{background:#dbefdf;border:2px solid #69a880}.nh-game .slot.wrong{background:#fff0e2;border:2px solid #cb7d42;animation:nh-shake .25s}.nh-game .slot.over{background:#e1eee8;border-color:var(--teal)}.nh-game .status{min-height:52px;margin:0;padding:10px 24px 17px;text-align:center;line-height:1.6;font-weight:700}.nh-game .card-area{margin-top:23px;text-align:center}.nh-game .card-title{font-size:13px;letter-spacing:.05em;color:#60716d}.nh-game .cards{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:13px 0 20px}.nh-game .card{width:72px;height:77px;border:1px solid #cbd6c8;border-bottom:4px solid #c1cdbd;border-radius:15px;background:var(--paper);color:var(--ink);font-size:27px;font-weight:800;touch-action:none;user-select:none;-webkit-user-select:none}.nh-game .card.selected{background:#24776e;color:white;border-color:#185c55;transform:translateY(-4px)}.nh-game .card:disabled{cursor:default;opacity:.35}.nh-game .card.used{opacity:.22}.nh-game .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.nh-game .primary,.nh-game .secondary{border-radius:30px;min-height:48px;padding:12px 24px;font-weight:700}.nh-game .primary{background:var(--teal);color:white;border:1px solid var(--teal)}.nh-game .secondary{background:transparent;border:1px solid #b7c6b8;color:var(--ink)}.nh-game details{margin-top:26px;border-top:1px solid #d4ddcf;padding-top:18px;color:#60716d;font-size:14px;line-height:1.9}.nh-game summary{cursor:pointer;font-weight:700}.nh-game .drag-ghost{position:fixed;z-index:1000;pointer-events:none;transform:translate(-50%,-50%);background:#24776e;color:white;border-radius:12px;padding:16px 22px;font-size:26px;box-shadow:0 6px 25px #0002}.nh-game .scroll-hint{display:none;font-size:12px;text-align:right;color:#60716d;margin:10px 20px 0}.nh-game .success{color:#24776e;animation:nh-bloom .65s}.nh-game .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@keyframes nh-shake{25%{translate:-4px}75%{translate:4px}}@keyframes nh-bloom{50%{transform:scale(1.04)}}@media(max-width:700px){.nh-game{padding:24px 14px}.nh-game .controls{gap:12px}.nh-game .segmented button{padding:9px 14px}.nh-game .board-head{padding:16px 16px 0}.nh-game .scroll-hint{display:block}.nh-game .card{width:58px;height:65px}.nh-game .cards{gap:9px}.nh-game .intro{font-size:14px}.nh-game .status{font-size:14px;padding-inline:16px}}@media(prefers-reduced-motion:reduce){.nh-game *{transition:none!important;animation:none!important}}
+
+/* Compact playing surface: reserve room for cards and controls. */
+.nh-game{max-width:960px;padding:12px 20px;position:relative}
+.nh-game .eyebrow{font-size:10px}.nh-game h1{font-size:28px;margin:4px 0}
+.nh-game .intro{font-size:13px;margin:0 0 10px;line-height:1.5}
+.nh-game .controls{gap:14px;margin-bottom:10px}.nh-game .field{gap:3px;font-size:12px}
+.nh-game .segmented{padding:3px}.nh-game .segmented button{padding:7px 16px}
+.nh-game .board-head{padding:10px 16px 0}.nh-game .badge{padding:5px 10px}
+.nh-game .staff{aspect-ratio:900/260;max-width:clamp(650px,calc((100dvh - 340px)*3.46),900px);margin:auto}
+.nh-game .slot{top:76%;height:20%;font-size:23px}
+.nh-game .status{min-height:40px;padding:4px 12px 8px;font-size:14px}
+.nh-game .card-area{margin-top:9px}.nh-game .cards{margin:6px 0 9px;gap:10px}
+.nh-game .card{width:60px;height:58px;font-size:25px}
+.nh-game .primary,.nh-game .secondary{min-height:44px;padding:8px 22px}
+.nh-game details{margin-top:9px;padding-top:6px;font-size:12px}
+.nh-game details[open]{position:absolute;z-index:20;inset:10px 12px auto;background:var(--paper);border:1px solid #b7c6b8;border-radius:16px;padding:16px;box-shadow:0 10px 40px #263e4030;max-height:calc(100dvh - 24px);overflow:auto}
+.nh-game .scroll-hint{margin:4px 16px 0;font-size:11px}
+@media(max-width:700px){.nh-game{padding:8px 10px}.nh-game h1{font-size:24px}.nh-game .intro{font-size:12px;margin-bottom:7px}.nh-game .controls{gap:7px 10px}.nh-game .segmented button{padding:6px 10px}.nh-game select{padding:6px;font-size:12px}.nh-game .card{width:48px;height:52px}.nh-game .cards{gap:7px}.nh-game .progress,.nh-game .badge{font-size:11px}}
+@media(max-height:650px) and (min-width:701px){.nh-game header{display:flex;align-items:center;gap:14px;margin-bottom:7px}.nh-game .eyebrow,.nh-game .intro{display:none}.nh-game h1{font-size:24px}.nh-game .controls{margin-bottom:6px}.nh-game .card-title{display:none}.nh-game .card-area{margin-top:5px}}
+.nh-game .staff{max-width:clamp(650px,calc((100dvh - 400px)*3.46),900px)}
+@media(max-width:700px){.nh-game .controls{display:grid;grid-template-columns:1.3fr 1.2fr .8fr;align-items:end;gap:7px}.nh-game .field{min-width:0;font-size:11px}.nh-game .segmented button{flex:1;padding:5px 3px;font-size:12px;white-space:nowrap}.nh-game select{width:100%;min-width:0;font-size:11px}.nh-game .status{min-height:46px;font-size:12px}.nh-game .board-head{padding:8px 10px 0}.nh-game .badge{padding:5px}.nh-game .progress{font-size:10px}}
+
+/* Keep two-character names on one line, including narrow mobile cards. */
+.nh-game .card,.nh-game .slot{white-space:nowrap;word-break:keep-all;line-height:1;display:inline-flex;align-items:center;justify-content:center;padding:0 3px}
+.nh-game .card[data-name="ファ"]{font-size:21px;letter-spacing:-.06em}
+@media(max-width:700px){.nh-game .card[data-name="ファ"]{font-size:18px}}
+
+/* The same quiet garden as Stage 1. Decorations never intercept input. */
+body{background-color:#efddc5;background-image:radial-gradient(ellipse 55% 23% at 0% 95%,#dfc5a780 0 65%,transparent 66%),radial-gradient(ellipse 45% 20% at 100% 100%,#d9bea080 0 65%,transparent 66%),linear-gradient(#e6edce 0 10px,transparent 10px);background-attachment:fixed}
+.nh-game{--ink:#554a3d;--teal:#426f60;--paper:#fffdf2}
+.nh-game h1{color:#66523e}.nh-game .intro,.nh-game .field{color:#6d7968}
+.nh-game .segmented{background:#dce3d1}.nh-game .segmented button[aria-pressed=true]{background:#809982;color:white}
+.nh-game select{border-color:#d0bfa6;background:#fffcf2}.nh-game .board{position:relative;border:2px solid #ceb997;background:#fffdf2;box-shadow:0 5px 20px #85644308}
+.nh-game .badge{background:#e8eddc;color:#426f60}.nh-game .slot{background:#eaf0df}.nh-game .slot.empty{background:#fffdf2;border-color:#aaba9c}
+.nh-game .slot.over{background:#e1edcd;border-color:#678b59;box-shadow:0 0 0 4px #a1bb862e}
+.nh-game .slot.correct{background:#deedd5;border-color:#83a174}.nh-game .card{background:#fffcf2;border-color:#c8cbb6;border-bottom-color:#adb99c}
+.nh-game .card.selected{background:#62866a;color:white;border-color:#496f53}
+.nh-game .primary{background:#718f75;border-color:#718f75}.nh-game .secondary{background:#f9f5e8;border-color:#bbc4a9}
+.nh-game .status{position:relative;z-index:1;padding-left:80px;padding-right:65px}
+.nh-game .garden-friend{position:absolute;bottom:0;left:5px;width:72px;height:75px;pointer-events:none;z-index:2}
+.nh-game .garden-friend svg{width:72px;height:75px;overflow:hidden}
+.nh-game .mole-peek{transform:translateY(24px);transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.nh-game .friend-message{position:absolute;bottom:68px;left:8px;white-space:nowrap;background:#f8edca;border:1px solid #d1bd8d;border-radius:14px;padding:6px 10px;color:#716044;font-size:12px;font-weight:700;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.nh-game .garden-leaves{position:absolute;right:3px;bottom:0;width:58px;height:48px;pointer-events:none;opacity:.75}
+.nh-game .garden-leaves svg{width:100%;height:100%}
+.nh-game.completed .mole-peek{transform:translateY(0)}
+.nh-game.completed .friend-message{opacity:1;transform:translateY(0)}
+.nh-game.completed .board{border-color:#a2b28b;transition:border-color .5s}
+@media(max-width:700px){.nh-game .garden-friend,.nh-game .garden-friend svg{width:55px;height:58px}.nh-game .friend-message{bottom:53px;left:0;font-size:10px;padding:5px 7px}.nh-game .garden-leaves{width:38px;height:36px}.nh-game .status{padding-left:60px;padding-right:40px}}
+
+.nh-game .sound-toggle{font-size:13px;min-width:86px;padding-inline:13px;background:#e7eddc}
+@media(max-width:700px){.nh-game .actions{gap:7px}.nh-game .actions button{padding-inline:14px}.nh-game .sound-toggle{font-size:12px;min-width:73px}}
+
+.nh-game .nh-home{display:inline-block;color:#426f60;font-size:12px;font-weight:700;text-decoration:none;margin-left:16px;padding:6px 9px;border-radius:10px;background:#e6ecd9;white-space:nowrap}
+.nh-game .nh-home:focus-visible{outline:3px solid #d19a36;outline-offset:3px}
+@media(max-width:420px){.nh-game .nh-home{font-size:11px;margin-left:8px;padding:5px}}
+</style></head>
+<body><main id="note-hide-game" class="nh-game"></main><script>/* Stage 2: dependency-free, scoped styles; mount into any container. */
+(function(global){
+'use strict';
+const GROUPS={line:{title:'線（せん）の音',names:['ド','ミ','ソ','シ','レ','ファ'],steps:[0,2,4,6,8,10]},space:{title:'間（かん）の音',names:['レ','ファ','ラ','ド','ミ'],steps:[1,3,5,7,9]}};
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function mount(root,options={}){
+if(typeof root==='string')root=document.querySelector(root);
+if(!root)throw new Error('ゲームの配置先がありません');
+root.classList.add('nh-game');
+root.innerHTML=`<header><span class="eyebrow">おとのおにわ · ステージ 2</span><a class="nh-home" href="index.html">← ステージ選択</a><h1>音符のかくれんぼ</h1><p class="intro">よく見て、おぼえて。かくれた音名を、もとの場所へ。</p></header><section class="controls" aria-label="ゲーム設定"><div class="field">練習する音<div class="segmented"><button data-group="line" aria-pressed="true">線（せん）</button><button data-group="space" aria-pressed="false">間（かん）</button></div></div><label class="field">レベル<select data-level><option value="1">1 · 2個かくれる</option><option value="2">2 · 3〜4個かくれる</option><option value="3">3 · 全部かくれる</option></select></label><label class="field">おぼえる時間<select data-seconds><option value="5">5秒</option><option value="8">8秒</option><option value="3">3秒</option></select></label></section><section class="board" aria-label="ト音記号の五線譜"><div class="board-head"><span class="badge"></span><span class="progress"></span></div><p class="scroll-hint">五線譜は左右にスクロールできます ↔</p><div class="staff-scroll"><div class="staff"></div></div><div class="garden-friend" aria-hidden="true"><span class="friend-message">みつかった！</span><svg viewBox="0 0 120 120" focusable="false"><ellipse cx="61" cy="109" rx="48" ry="9" fill="#d8c2a3"/><g class="mole-peek"><ellipse cx="36" cy="64" rx="12" ry="14" fill="#b38d6d"/><ellipse cx="84" cy="64" rx="12" ry="14" fill="#b38d6d"/><ellipse cx="60" cy="82" rx="32" ry="36" fill="#b99575"/><ellipse cx="60" cy="94" rx="22" ry="22" fill="#d9b99a"/><ellipse cx="48" cy="77" rx="3.2" ry="4" fill="#453a30"/><ellipse cx="72" cy="77" rx="3.2" ry="4" fill="#453a30"/><ellipse cx="60" cy="87" rx="6" ry="4.5" fill="#8c6455"/><ellipse cx="40" cy="88" rx="6" ry="3" fill="#dfaa94"/><ellipse cx="80" cy="88" rx="6" ry="3" fill="#dfaa94"/><path d="M55 97Q60 102 65 97" fill="none" stroke="#765944" stroke-width="2" stroke-linecap="round"/></g><g fill="#91a77a"><ellipse cx="27" cy="102" rx="12" ry="24" transform="rotate(-42 27 102)"/><ellipse cx="42" cy="108" rx="10" ry="22" transform="rotate(-15 42 108)"/><ellipse cx="90" cy="101" rx="12" ry="25" transform="rotate(44 90 101)"/><ellipse cx="77" cy="110" rx="11" ry="22" transform="rotate(18 77 110)"/></g><path d="M13 114Q60 97 107 114" fill="none" stroke="#728c66" stroke-width="5" stroke-linecap="round"/></svg></div><div class="garden-leaves" aria-hidden="true"><svg viewBox="0 0 100 80" focusable="false"><path d="M20 74Q38 46 80 20" fill="none" stroke="#8b9d72" stroke-width="3"/><g fill="#b3c29b"><ellipse cx="35" cy="49" rx="9" ry="19" transform="rotate(-40 35 49)"/><ellipse cx="62" cy="43" rx="9" ry="19" transform="rotate(60 62 43)"/><ellipse cx="73" cy="21" rx="8" ry="17" transform="rotate(44 73 21)"/></g></svg></div><p class="status" role="status" aria-live="polite"></p></section><section class="card-area" aria-label="音名カード"><span class="card-title">音名カードをえらぼう</span><div class="cards"></div><div class="actions"><button class="primary" data-start>はじめる</button><button class="secondary sound-toggle" data-sound aria-pressed="true" aria-label="効果音をオフにする">♪ 音あり</button></div></section><details><summary>あそびかた</summary><p>① 線・間とレベルをえらび、「はじめる」を押します。<br>② 音符と音名をおぼえましょう。数秒後、音名だけがふわっとかくれます。<br>③ 下のカードをタップして、同じ音名がかくれた「？」をタップ。ドラッグして置くこともできます。<br>④ ちがっても何度でもやり直せます。時間制限はありません。</p><p>小さい画面では五線譜を左右に動かせます。キーボードでは Tab でカードや「？」をえらび、Enter またはスペースで決定できます。線・間やレベルを変えると新しい問題になります。</p></details>`;
+const q=s=>root.querySelector(s);let group='line',level=1,phase='ready',hidden=[],solved=new Set(),selected=null,timers=[],drag=null;
+// Synthesized local sounds: no audio files, network, or autoplay required.
+let audio=null,soundEnabled=true,soundEpoch=0;const voices=new Set();
+function unlockAudio(){
+if(!soundEnabled)return false;
+try{const Audio=global.AudioContext||global.webkitAudioContext;if(!Audio)return false;if(!audio)audio=new Audio();if(audio.state==='suspended')audio.resume().catch(()=>{});return true;}catch(_){return false;}
+}
+function stopSounds(){soundEpoch++;voices.forEach(o=>{try{o.stop();}catch(_){};});voices.clear();}
+function tone(frequency,delay,duration,volume=.09,type='sine'){
+if(!audio||!soundEnabled)return;
+try{const at=audio.currentTime+delay,o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(frequency,at);g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(volume,at+.012);g.gain.exponentialRampToValueAtTime(.0001,at+duration);o.connect(g);g.connect(audio.destination);voices.add(o);o.onended=()=>{voices.delete(o);o.disconnect();g.disconnect();};o.start(at);o.stop(at+duration+.02);}catch(_){}
+}
+function playSound(kind){
+if(!soundEnabled||!audio)return;
+const epoch=soundEpoch;
+const play=()=>{if(epoch!==soundEpoch||!soundEnabled)return;if(kind==='sparkle'){
+[1046.5,1318.5,1568,2093,2637].forEach((f,i)=>{tone(f,i*.085,.55,.045);tone(f*2,i*.085,.28,.012);});
+}else if(kind==='hide'){tone(1046.5,0,.32,.07);tone(1568,.05,.26,.025);}
+else{tone(523.25,0,.18,.085);tone(1046.5,0,.09,.015);}};
+if(audio.state==='running')play();else audio.resume().then(play).catch(()=>{});
+}
+const later=(fn,ms)=>{const t=setTimeout(fn,ms);timers.push(t);};
+// One pointer gesture has one outcome. Native pointer-generated clicks are ignored.
+let pointerClickUntil=0;
+function clearSelection(){selected=null;updateCards();}
+function cancelDrag(){const old=drag;drag=null;if(old&&root.hasPointerCapture?.(old.id))root.releasePointerCapture(old.id);root.querySelectorAll('.drag-ghost').forEach(el=>el.remove());root.querySelectorAll('.slot').forEach(b=>b.classList.remove('over'));}
+function dropTarget(x,y){
+const slots=[...root.querySelectorAll('.slot')];
+const viewport=q('.staff-scroll').getBoundingClientRect();
+if(x<viewport.left-12||x>viewport.right+12)return null;
+// Find the nearest COLUMN first, including answered columns, to avoid snapping to a different note.
+let nearest=null,distance=Infinity;
+slots.forEach(b=>{const r=b.getBoundingClientRect(),d=Math.abs(x-(r.left+r.right)/2);if(d<distance){nearest=b;distance=d;}});
+if(!nearest||nearest.disabled)return null;
+const r=nearest.getBoundingClientRect();const staff=q('.staff').getBoundingClientRect();
+const centers=slots.map(b=>{const r=b.getBoundingClientRect();return(r.left+r.right)/2;});
+const spacing=centers.length>1?Math.abs(centers[1]-centers[0]):100;
+return distance<=spacing/2&&y>=staff.top+staff.height*.12&&y<=r.bottom+64?nearest:null;
+}
+// Brief hysteresis keeps the visible target stable across fast release jitter.
+function gestureTarget(e){
+const exact=dropTarget(e.clientX,e.clientY);
+if(exact){drag.hover=exact;drag.hoverX=e.clientX;drag.hoverY=e.clientY;drag.hoverAt=Date.now();return exact;}
+if(drag.hover&&!drag.hover.disabled&&Math.hypot(e.clientX-drag.hoverX,e.clientY-drag.hoverY)<=64)return drag.hover;
+drag.hover=null;return null;
+}
+function moveDrag(e){
+if(!drag||drag.id!==e.pointerId)return;
+if(e.buttons===0&&drag.pointerType==='mouse'){endDrag(e);return;}
+if(!drag.ghost&&Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6){
+const ghost=document.createElement('div');ghost.className='drag-ghost';ghost.textContent=drag.name;root.append(ghost);drag.ghost=ghost;
+clearSelection();}
+if(drag.ghost){if(e.cancelable)e.preventDefault();drag.ghost.style.left=e.clientX+'px';drag.ghost.style.top=e.clientY+'px';const target=gestureTarget(e);root.querySelectorAll('.slot').forEach(b=>b.classList.toggle('over',b===target));}
+}
+function endDrag(e){
+if(!drag||drag.id!==e.pointerId)return;
+// Resolve once, using the same retained target as the preview; do not erase it first.
+const gesture=drag;
+const moved=!!gesture.ghost||Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>6;
+const target=moved?gestureTarget(e):null;
+cancelDrag();pointerClickUntil=Date.now()+800;
+if(moved){try{if(target){selected=gesture.name;place(Number(target.dataset.index));}else status('「？」か、その上の音符の近くで離してね。');}finally{clearSelection();}}
+else select(gesture.name);
+}
+const blur=()=>{cancelDrag();clearSelection();};
+// Capture loss alone is not cancellation: global release listeners still own this gesture.
+const lostCapture=()=>{};
+const mouseRelease=e=>{if(drag&&drag.pointerType==='mouse')endDrag({pointerId:drag.id,clientX:e.clientX,clientY:e.clientY});};
+const touchRelease=e=>{if(drag&&drag.pointerType==='touch'&&e.changedTouches?.length){const t=e.changedTouches[0];endDrag({pointerId:drag.id,clientX:t.clientX,clientY:t.clientY});}};
+window.addEventListener('mouseup',mouseRelease,true);
+window.addEventListener('touchend',touchRelease,true);
+root.addEventListener('lostpointercapture',lostCapture);
+window.addEventListener('pointermove',moveDrag,{capture:true,passive:false});
+window.addEventListener('pointerup',endDrag,true);
+window.addEventListener('pointercancel',blur,true);
+window.addEventListener('blur',blur);
+const clear=()=>{stopSounds();timers.forEach(clearTimeout);timers=[];cancelDrag();clearSelection();};
+function status(s){q('.status').textContent=s;}
+function updateCards(){root.querySelectorAll('.card').forEach(b=>{b.classList.toggle('selected',selected===b.dataset.name);b.setAttribute('aria-pressed',String(selected===b.dataset.name));b.disabled=phase!=='play'||[...solved].some(i=>GROUPS[group].names[i]===b.dataset.name);b.classList.toggle('used',phase==='play'&&b.disabled);});}
+function render(){clear();root.classList.remove('completed');phase='ready';hidden=[];solved=new Set();selected=null;q('.status').classList.remove('success');const g=GROUPS[group];q('.badge').textContent=`ト音記号 · ${g.title}`;q('.progress').textContent='まずは音名を見てみよう';q('[data-start]').textContent='はじめる';q('[data-start]').disabled=false;
+let svg='<svg viewBox="0 40 900 260" aria-hidden="true"><g stroke="#65766b" stroke-width="1.8">';for(let y=88;y<=184;y+=24)svg+=`<path d="M28 ${y}H876"/>`;svg+='</g><text x="29" y="193" font-size="155" font-family="Apple Symbols,Noto Music,serif" fill="#263e40">𝄞</text>';
+g.names.forEach((n,i)=>{const x=170+i*(650/(g.names.length-1)),y=208-g.steps[i]*12;if(g.steps[i]===0)svg+=`<path d="M${x-25} ${y}h50" stroke="#263e40" stroke-width="2"/>`;svg+=`<ellipse cx="${x}" cy="${y}" rx="13" ry="9" transform="rotate(-18 ${x} ${y})" fill="#263e40"/><path d="M${x+(y>136?11:-11)} ${y}v${y>136?-50:50}" stroke="#263e40" stroke-width="2.8"/>`;});svg+='</svg>';q('.staff').innerHTML=svg;
+g.names.forEach((n,i)=>{const b=document.createElement('button');b.className='slot';b.style.left=`${(170+i*(650/(g.names.length-1)))/9}%`;b.textContent=n;b.disabled=true;b.dataset.index=i;b.setAttribute('aria-label',`${i+1}番目の音名 ${n}`);b.onclick=()=>place(i);q('.staff').append(b);});q('.cards').replaceChildren();shuffle(g.names).forEach(n=>{const b=document.createElement('button');b.className='card';b.textContent=n;b.dataset.name=n;b.setAttribute('aria-label',`${n} のカード`);b.onclick=e=>{if(e.detail===0&&Date.now()>pointerClickUntil)select(n);};
+b.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(n);}};b.ondragstart=e=>e.preventDefault();b.draggable=false;
+b.onpointerdown=e=>{if(b.disabled||e.button!==0||e.isPrimary===false)return;if(e.cancelable)e.preventDefault();cancelDrag();drag={name:n,x:e.clientX,y:e.clientY,id:e.pointerId,button:b,pointerType:e.pointerType||'mouse',ghost:null};try{root.setPointerCapture(e.pointerId);}catch(_){};};
+q('.cards').append(b);});updateCards();status('音符と音名を見て、「はじめる」を押そう。');}
+function select(n){if(phase!=='play')return;selected=selected===n?null:n;updateCards();status(selected?`「${selected}」をえらんだよ。かくれた場所を押してね。`:'カードをえらんでね。');}
+function start(){if(phase!=='ready')render();phase='memorize';unlockAudio();playSound('tick');q('[data-start]').disabled=true;let remaining=Number(q('[data-seconds]').value);const total=GROUPS[group].names.length;const count=level===1?2:level===2?3+Math.floor(Math.random()*2):total;hidden=shuffle([...Array(total).keys()]).slice(0,count);status(`音名をおぼえよう。あと${remaining}秒`);q('.progress').textContent=`${count}個の音名がかくれるよ`;
+function tick(){remaining--;if(remaining>0){playSound('tick');status(`音名をおぼえよう。あと${remaining}秒`);later(tick,1000);}else{playSound('hide');hidden.forEach(i=>root.querySelectorAll('.slot')[i].classList.add('hiding'));status('音名がかくれるよ…');later(()=>{phase='play';hidden.forEach(i=>{const b=root.querySelectorAll('.slot')[i];b.className='slot empty';b.textContent='？';b.disabled=false;b.setAttribute('aria-label',`${i+1}番目のかくれた音名を答える`);});q('.progress').textContent=`0 / ${count} みつけた`;updateCards();status('カードをえらんで「？」に置こう。ゆっくりで大丈夫。');},700);}}later(tick,1000);}
+function place(i){if(phase!=='play'||!hidden.includes(i)||solved.has(i))return;if(!selected){status('先に下の音名カードをえらんでね。');return;}const b=root.querySelectorAll('.slot')[i];if(selected!==GROUPS[group].names[i]){b.classList.remove('wrong');void b.offsetWidth;b.classList.add('wrong');status('おしい！ 音符の高さを見て、もう一度。');selected=null;updateCards();later(()=>b.classList.remove('wrong'),700);return;}solved.add(i);b.textContent=selected;b.className='slot correct';b.disabled=true;b.setAttribute('aria-label',`${i+1}番目 ${selected} 正解`);selected=null;q('.progress').textContent=`${solved.size} / ${hidden.length} みつけた`;if(solved.size===hidden.length){phase='success';root.classList.add('completed');playSound('sparkle');status('✧ ぜんぶ見つけたね！ よくできました。');q('.status').classList.add('success');q('[data-start]').textContent='次の問題';q('[data-start]').disabled=false;root.dispatchEvent(new CustomEvent('notehide:complete',{bubbles:true,detail:{group,level,total:hidden.length}}));options.onComplete?.({group,level,total:hidden.length});}else status('正解！ その調子。');updateCards();}
+root.querySelectorAll('[data-group]').forEach(b=>b.onclick=()=>{group=b.dataset.group;root.querySelectorAll('[data-group]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));render();});q('[data-level]').onchange=e=>{level=Number(e.target.value);render();};q('[data-seconds]').onchange=render;
+q('[data-sound]').onclick=()=>{soundEnabled=!soundEnabled;const b=q('[data-sound]');b.textContent=soundEnabled?'♪ 音あり':'音なし';b.setAttribute('aria-pressed',String(soundEnabled));b.setAttribute('aria-label',soundEnabled?'効果音をオフにする':'効果音をオンにする');if(soundEnabled){unlockAudio();playSound('tick');}else stopSounds();};q('[data-start]').onclick=start;render();return{reset:render,destroy(){clear();if(audio){audio.close().catch(()=>{});audio=null;}window.removeEventListener('mouseup',mouseRelease,true);window.removeEventListener('touchend',touchRelease,true);root.removeEventListener('lostpointercapture',lostCapture);window.removeEventListener('pointermove',moveDrag,true);window.removeEventListener('pointerup',endDrag,true);window.removeEventListener('pointercancel',blur,true);window.removeEventListener('blur',blur);root.replaceChildren();}};
+}
+global.NoteHideAndSeek={mount};const auto=document.getElementById('note-hide-game');if(auto)mount(auto);
+})(window);
+</script></body></html>
